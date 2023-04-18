@@ -14,6 +14,7 @@ class Product(db.Model):
     name = db.Column(db.String(100))
     price = db.Column(db.Float)
     description = db.Column(db.Text)
+    materials = db.Column(db.Text)
     image_url = db.Column(db.String(200))
     image_url_2 = db.Column(db.String(200))
     image_url_3= db.Column(db.String(200))

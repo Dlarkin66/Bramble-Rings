@@ -108,12 +108,13 @@ def add_product():
         name = request.form['name']
         price = request.form['price']
         description = request.form['description']
+        materials = request.form.get('materials')
         image_url = request.form['image_url']
         image_url_2 = request.form['image_url_2']
         image_url_3 = request.form['image_url_3']
         image_url_4 = request.form['image_url_4']
         
-        new_product = Product(name=name, price=price, description=description, image_url=image_url, image_url_2=image_url_2, image_url_3=image_url_3, image_url_4=image_url_4)
+        new_product = Product(name=name, price=price, description=description, materials=materials, image_url=image_url, image_url_2=image_url_2, image_url_3=image_url_3, image_url_4=image_url_4)
         db.session.add(new_product)
         db.session.commit()
         
@@ -148,6 +149,7 @@ def edit_product(id):
         name = request.form.get('name')
         description = request.form.get('description')
         price = request.form.get('price')
+        materials = request.form.get('materials')
         image_url = request.form.get('image_url')
         image_url_2 = request.form.get('image_url_2')
         image_url_3 = request.form.get('image_url_3')
@@ -157,6 +159,7 @@ def edit_product(id):
         product.name = name
         product.description = description
         product.price = price
+        product.materials = materials
         product.image_url = image_url
         product.image_url_2 = image_url_2
         product.image_url_3 = image_url_3
