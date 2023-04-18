@@ -1,0 +1,69 @@
+{% extends "base.html" %} 
+
+
+{% block title %}Home{% endblock %}
+
+{% block content2 %}
+  <div>
+    <img 
+      src="https://drive.google.com/uc?export=view&id=1WocU4ebN9lD-wSiuUA8NiIY6gaJmUUvt" 
+      alt="Bramble, Rings For Any Occasion" 
+      class="img-fluid home-banner"
+    />
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <h1 class="intro-text">Handmade Rings, Crafted To Last A Lifetime</h1>
+    <hr class="solid-intro">
+
+    {% for product in products %}
+      <div class="col-md-3 text-center">
+        <a href="{{ url_for('views.product_details', id=product.id) }}">
+          <img src="{{ product.image_url }}" alt="{{ product.name }}" class="img-thumbnail mx-auto"/>
+        </a>
+        <p class="product-title">{{ product.name }}</p>
+        <p class="price">${{ "%.2f" % product.price }}</p>
+
+        {% if user.is_authenticated and user.email == admin %}
+          <form action="{{ url_for('auth.remove_product', id=product.id) }}" method="POST">
+              <button type="submit">Remove</button>
+          </form>
+        {% endif %}
+
+      </div>
+    {% endfor %}
+
+    <hr class="solid-wcb">
+    <h1 class="why-bramble">Why Choose Bramble?</h1>
+
+    <div class="col-md-4 text-center">
+      <h1 class="why-bramble-headers">Expertly Handcrafted</h1>
+      <h3 class="why-bramble-desc">Rings at Bramble are handmade, ensuring the highest quality craftsmanship and attention to detail.</h3>
+    </div>
+
+    <div class="col-md-4 text-center">
+      <h1 class="why-bramble-headers">Quality Materials</h1>
+      <h3 class="why-bramble-desc">Bramble uses only the best materials, resulting in incredible one of a kind rings.</h3>
+    </div>
+
+    <div class="col-md-4 text-center">
+      <h1 class="why-bramble-headers">Fast and Reliable</h1>
+      <h3 class="why-bramble-desc">Here at Bramble, rings are crafted in a timely fashion ensuring your ring arrives when you need it to.</h3>
+    </div>
+
+    <hr class="solid">
+
+    <div class="col-md-4 text-center">
+      <img src="https://drive.google.com/uc?export=view&id=1rpwufX1cq1oDkaQdfqRZYvnWYQHvD3lI" alt="Bramble Rings packaging" class="img-thumbnail packaging-image"/>
+    </div>
+
+    <div class="col-md-8 text-center">
+      <h3 class="packaging-desc">All Bramble rings are shipped with high quality fully recyclable ring boxes, a handwritten thank you note from Bramble in a wax sealed envelope, a care intstructions card, and some Bramble stickers! </h3>
+    </div>
+
+    <hr class="solid">
+
+  </div>
+{% endblock %}

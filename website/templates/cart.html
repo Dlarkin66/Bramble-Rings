@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Your Cart</h1>
+
+{% for item in cart_items %}
+  {% if item.product %}
+    <div class="column">
+      <a href="{{ url_for('views.product_details', id=item.product.id) }}">
+        <img src="{{ item.product.image_url }}" alt="{{ item.name }}" class="img-thumbnail mx-auto"/>
+      </a>
+      <p>{{ item.product.name }}</p>
+      <p>${{ "%.2f" % item.price }}</p>
+      <p>{{ item.quantity }}</p>
+    </div>
+  {% endif %}
+{% endfor %}
+<p>Total Price: ${{ "%.2f" % total_price }}</p>
+{% endblock %}

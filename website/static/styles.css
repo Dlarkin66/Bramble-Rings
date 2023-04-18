@@ -1,0 +1,235 @@
+/* Nav-bar */
+
+body{
+    background-color: white;
+}
+
+.navbar-brand{
+    margin-right: 50px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+}
+
+.nav-link{
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+}
+
+.border-bottom{
+    border-bottom: 2px solid black !important;
+}
+
+
+/* Forms */
+
+.login-logout-header {
+    color: black;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+}
+
+.btn{
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+    transition: all .7s;
+}
+
+.btn:hover{
+    color: black;
+    background-color: white;
+    border-color: black;
+}
+
+.form-control{
+    border-color: black;
+}
+
+.form-control:focus{
+    border-color: black;
+    box-shadow: 0 0 0 0.2rem black;
+}
+
+.form-label{
+    color: black;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+}
+
+
+/* Home-page */
+
+.home-banner{
+    height: auto;
+    width: 100vw;
+}
+
+.intro-text{
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+.img-thumbnail{
+    padding: 0;
+    border-width: 0;
+    transition: .6s;
+}
+
+.img-thumbnail:hover{
+    transform: scale(.95);
+    transition: .6s;
+}
+
+.product-title{
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    text-align: left;
+}
+
+.price{
+    margin-top: -10px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1em;
+}
+
+.why-bramble{
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.why-bramble-headers{
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.why-bramble-desc{
+    padding-top: 20px;
+    padding-left: 20px;
+    font-family: 'Raleway', serif;
+    font-size: 20px;
+    text-align: center;
+    width: 95%
+}
+
+.solid{
+    margin-top: 30px;
+    border-top: 3px solid black;
+}
+
+.solid-intro{
+    border-top: 3px solid black;
+    margin-top: -30px;
+    margin-bottom: 3 0px;
+}
+
+.solid-wcb{
+    margin-top: 100px;
+    border-top: 3px solid black;
+}
+
+
+.packaging-image{
+    width: 100%;
+    padding-top: 100px;
+}
+
+.packaging-desc{
+    font-family: 'Raleway', serif;
+    font-size: 30px;
+    margin-top:300px;
+    text-align: center;
+}
+
+
+/* product details */
+
+.product-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.gallery-container {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.active-photo{
+    width: 30vw;
+    height: 30vw;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    object-fit: cover;
+}
+
+.thumbnail{
+    display: inline-block;
+    white-space: none;
+}
+
+.thumbnail img{
+    width: 9.8vw;
+    height: 9.8vw;
+    margin-right: 5px;
+    object-fit: cover;
+}
+
+.description-container {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.divider{
+    border-top: 3px solid black;
+}
+
+.divider-price{
+    border-top: 3px solid black;
+    width: 5vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pd-name{
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 35px;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.pd-price{
+    text-align: center;
+    font-family: 'cinzel', serif;
+    font-size: 25px;
+}
+
+.pd-description {
+    font-family: 'Raleway', serif;
+    font-size: 20px;
+    padding-top: 20px;
+    padding-left: 5px;
+}

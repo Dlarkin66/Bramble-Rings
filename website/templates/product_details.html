@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Product Details{% endblock %}
+
+{% block content %}
+
+    <div class="product-container">
+        <div class="gallery-container">
+            <div class="gallery">
+
+                <div class="main-image active">
+                    <img class='active-photo' src="{{ product.image_url_2 }}" alt="{{ product.name }}">
+                </div>
+
+                {% if product.image_url_2 %}
+                    <div class="thumbnail">
+                        <img src="{{ product.image_url_2 }}" alt="{{ product.name }}" class="img-thumbnail pd">
+                    </div>
+                {% endif %}
+
+                {% if product.image_url_3 %}
+                    <div class="thumbnail">
+                        <img src="{{ product.image_url_3 }}" alt="{{ product.name }}" class="img-thumbnail pd">
+                    </div>
+                {% endif %}
+
+                {% if product.image_url_4 %}
+                    <div class="thumbnail">
+                        <img src="{{ product.image_url_4 }}" alt="{{ product.name }}" class="img-thumbnail pd">
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+           
+        <div class="description-container">
+            <h1 class="pd-name">{{ product.name }}</h1>
+
+            <hr class="divider">
+
+            <p class="pd-price">${{ "%.2f" % product.price }}</p>
+
+            <hr class="divider-price">
+
+            <p class="pd-description">{{ product.description }}</p>
+
+            <form action="{{ url_for('auth.add_to_cart', product_id=product.id) }}" method="[POST]">
+                <lable for="ring-size">Ring Size:</lable>
+                <select name="ring-size" id="ring-size">
+                    <option value="5">5</option>
+                    <option value="5.5">5.5</option>
+                    <option value="6">6</option>
+                    <option value="6.5">6.5</option>
+                    <option value="7">7</option>
+                    <option value="7.5">7.5</option>
+                    <option value="8">8</option>
+                    <option value="8.5">8.5</option>
+                    <option value="9">9</option>
+                    <option value="9.5">9.5</option>
+                    <option value="10">10</option>
+                    <option value="10.5">10.5</option>
+                    <option value="11">11</option>
+                    <option value="11.5">11.5</option>
+                    <option value="12">12</option>
+                    <option value="12.5">12.5</option>
+                    <option value="13">13</option>
+                    <option value="13.5">13.5</option>
+                    <option value="14">14</option>
+                </select>
+            </form>
+
+            <a href="{{ url_for('auth.add_to_cart', product_id=product.id) }}">Add to cart</a>
+
+            {% if user.is_authenticated and user.email == admin %}
+                <a href="{{ url_for('auth.edit_product', id=product.id) }}">Edit</a>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <script>
+        var thumbnails = document.querySelectorAll('.thumbnail');
+        var activeImage = document.querySelector('.main-image img');
+      
+        thumbnails.forEach(function(thumbnail) {
+          thumbnail.addEventListener('click', function() {
+            var newImageSrc = this.querySelector('img').getAttribute('src');
+            activeImage.setAttribute('src', newImageSrc);
+          });
+        });
+    </script>
+
+{% endblock %}
+
