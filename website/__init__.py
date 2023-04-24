@@ -4,6 +4,7 @@ from os import path
 from flask_login import LoginManager
 from . import secret
 from flask_migrate import Migrate
+from flask_mail import Mail
 
 
 db = SQLAlchemy()
@@ -35,7 +36,15 @@ def create_app():
     @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))
+    
 
+    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+    app.config['MAIL_PORT'] = 465
+    app.config['MAIL_USE_SSL'] = True
+    app.config['MAIL_USERNAME'] = 'brambleringshelp@gmail.com'
+    app.config['MAIL_PASSWORD'] = 'jfyvdvyzfirsjmvf'
+
+    mail = Mail(app)
 
     return app
 

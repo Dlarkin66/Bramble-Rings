@@ -2,6 +2,8 @@
 
 body{
     background-color: white;
+    position: relative;
+    margin-bottom: 100px;
 }
 
 .navbar-brand{
@@ -47,13 +49,26 @@ body{
 
 .form-control:focus{
     border-color: black;
-    box-shadow: 0 0 0 0.2rem black;
+    box-shadow: 0 0 0 0.1rem black;
 }
 
 .form-label{
     color: black;
     font-family: 'Cinzel', serif;
     font-weight: bold;
+}
+
+.contact-msg-box{
+    width: 100%;
+    height: 20vh;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.form-border{
+    border: 3px solid black;
+    padding: 25px;
+    border-radius: 5px;
 }
 
 
@@ -67,7 +82,7 @@ body{
 
 
 .intro-text-tb{
-    border-top: 3px solid black;
+    border-top: 2px solid black;
     margin-top: 20px;
     margin-bottom: 5px;
 } 
@@ -80,7 +95,7 @@ body{
 }
 
 .intro-text-bb{
-    border-top: 3px solid black;
+    border-top: 2px solid black;
     margin-top: -5px;
     margin-bottom: 20px;
 }
@@ -155,7 +170,7 @@ body{
 .why-bramble-header-tb{
     border-top: 2px solid black;
     width:95%;
-    margin-top: 35px;
+    margin-top: 25px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -183,17 +198,68 @@ body{
     width: 95%
 }
 
-.packaging-image{
-    width: 100%;
-    padding-top: 100px;
+.bi-hammer{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
-.packaging-desc{
-    font-family: 'Raleway', serif;
-    font-size: 30px;
-    margin-top:300px;
-    text-align: center;
+.bi-award-fill{
+    margin-top: 70px;
+    margin-bottom: 50px;
 }
+
+.bi-alarm-fill{
+    margin-top: 45px;
+    margin-bottom: 50px;
+}
+
+.footer-container{
+    display: inline-block;
+}
+
+footer{
+    position:fixed;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 2px solid black;
+    background-color:white;
+    text-align: left;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibiliity 1s ease;
+}
+
+footer.show{
+    opacity: 1;
+    visibility: visible;
+}
+
+.footer-text{
+    padding-top: 15px;
+    padding-left: 10px;
+    font-family: 'Cinzel', sans-serif;
+    font-weight: bold;
+}
+
+.footer-icons{
+    display: flex;
+    padding-right: 10px;
+    justify-content: flex-end;
+    padding-top: 13px;
+}
+
+.bi-instagram{
+    margin-right: 10px;
+    color: black;
+}
+
+.bi-tiktok{
+    color: black;
+}
+
 
 
 /* product details */
@@ -274,3 +340,114 @@ body{
     padding-top: 20px;
     padding-left: 5px;
 }
+
+/* About section */
+.about-section-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.image-container{
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.about-me-text-container{
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 20px;
+    border: 5px solid black;
+    border-radius: 5px;
+    margin-top: 125px;
+}
+
+.about-me-tb{
+    margin-top: 50px;
+    border-top: 2px solid black;
+}
+
+.about-me-intro{
+    text-align: center;
+    font-family: 'Cinzel', sans-serif;
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.about-me-bb{
+    margin-bottom: 50px;
+    border-top: 2px solid black;
+}
+
+.about-me-image{
+    width: 85%;
+    height: auto;
+    border: 5px solid black;
+    border-radius: 5px;
+}
+
+.about-me-text{
+    font-family: 'Raleway', 'sans-serif';
+    font-size: 20px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.customer-testimonial-tb{
+    border: 1px solid black;
+    margin-top: 50px;
+}
+
+.customer-testimonials{
+    font-family: 'Cinzel', 'serif';
+    text-align: center;
+    font-weight: bold;
+}
+
+.customer-testimonial-bb{
+    border: 1px solid black;
+    margin-bottom: 75px;
+}
+
+.review-text{
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 65%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 20px;
+    padding-left: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.reviews{
+    border: 5px solid black;
+    border-radius: 5px;
+    margin-bottom: 75px; 
+}
+
+.reviews img{
+    display: inline-block;
+    width: 30%;
+    vertical-align: middle;
+    border-right: 5px solid black;
+}
+
+/* Contact Us */
+
+.contact-header{
+    padding-top: 25px;
+}
+
+.contact-us-txt{
+    font-family: 'raleway', 'sans-serif';
+    font-size: 20px;
+    text-align: center;
+    padding: 25px 0 25px 0;
+}
+

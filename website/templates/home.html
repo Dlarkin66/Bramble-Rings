@@ -18,7 +18,6 @@
     <hr class="intro-text-tb">
     <h1 class="intro-text">Handmade Rings, Crafted To Last A Lifetime</h1>
     <hr class="intro-text-bb">
-
     {% for product in products %}
       <div class="col-md-3">
         <a href="{{ url_for('views.product_details', id=product.id) }}">
@@ -30,12 +29,12 @@
         <p class="product-materials">{{ product.materials }}</p>
         <p class="price">${{ "%.2f" % product.price }}</p>
         <hr class="product-price-bb">
+
         {% if user.is_authenticated and user.email == admin %}
           <form action="{{ url_for('auth.remove_product', id=product.id) }}" method="POST">
               <button type="submit">Remove</button>
           </form>
         {% endif %}
-
       </div>
     {% endfor %}
 
@@ -48,6 +47,9 @@
       <h1 class="why-bramble-headers">Expertly Handcrafted</h1>
       <hr class="why-bramble-header-bb">
       <h3 class="why-bramble-desc">Bramble rings are handmade, ensuring the highest quality craftsmanship and attention to detail.</h3>
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-hammer" viewBox="0 0 16 16">
+        <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5.009 5.009 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334z"/>
+      </svg>
     </div>
 
     <div class="col-md-4 text-center">
@@ -55,6 +57,10 @@
       <h1 class="why-bramble-headers">Quality Materials</h1>
       <hr class="why-bramble-header-bb">
       <h3 class="why-bramble-desc">I use only the finest materials, resulting in incredible one of a kind rings.</h3>
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
+        <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
+        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+      </svg>
     </div>
 
     <div class="col-md-4 text-center">
@@ -62,7 +68,47 @@
       <h1 class="why-bramble-headers">Fast and Reliable</h1>
       <hr class="why-bramble-header-bb">
       <h3 class="why-bramble-desc"> Your ring is hand-crafted and shipped to you in a timely manner, ensuring it arrives exactly when you need it to.</h3>
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-alarm-fill" viewBox="0 0 16 16">
+        <path d="M6 .5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9v1.07a7.001 7.001 0 0 1 3.274 12.474l.601.602a.5.5 0 0 1-.707.708l-.746-.746A6.97 6.97 0 0 1 8 16a6.97 6.97 0 0 1-3.422-.892l-.746.746a.5.5 0 0 1-.707-.708l.602-.602A7.001 7.001 0 0 1 7 2.07V1h-.5A.5.5 0 0 1 6 .5zm2.5 5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5zM.86 5.387A2.5 2.5 0 1 1 4.387 1.86 8.035 8.035 0 0 0 .86 5.387zM11.613 1.86a2.5 2.5 0 1 1 3.527 3.527 8.035 8.035 0 0 0-3.527-3.527z"/>
+      </svg>
     </div>
 
+    <footer>
+      <p class="footer-text">©Bramble Rings</p>
+      <div class="footer-icons">
+        <a href='https://www.instagram.com/bramble_rings/'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@bramblerings">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+            <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/>
+          </svg>
+        </a>
+      </div>
+    </footer>
+
+    <script>  
+      function isScrolledToEnd() {
+        var scrollTop = document.documentElement.scrollTop;
+        var scrollHeight = document.documentElement.scrollHeight;
+        var clientHeight = document.documentElement.clientHeight;
+        
+        return (scrollTop + clientHeight) >= scrollHeight;
+      }
+      
+      function showHideFooter() {
+        var footer = document.querySelector('footer');
+        
+        if (isScrolledToEnd()) {
+          footer.classList.add('show');
+        } else {
+          footer.classList.remove('show');
+        }
+      }
+      
+      window.addEventListener('scroll', showHideFooter);
+    </script>
   </div>
 {% endblock %}

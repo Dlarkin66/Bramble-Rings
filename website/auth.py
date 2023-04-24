@@ -4,8 +4,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 from . import secret
+from flask_mail import Mail, Message
 
 auth = Blueprint('auth', __name__)
+mail = Mail()
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -171,3 +173,33 @@ def edit_product(id):
         return redirect(url_for('views.product_details', id=id))
     
     return render_template('edit_product.html', product=product, user=current_user)
+
+
+@auth.route('/contact', methods=['GET', 'POST'])
+@login_required
+def contact():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        subject = request.form['subject']
+        message = request.form['message']
+
+        msg = Message(
+            subject=subject,
+            sender=(name, email),
+            reply_to=email, 
+            recipients=['brambleringshelp@gmail.com'],
+            body=message
+        )
+
+        if len(name) < 2:
+            flash('Name must be longer than one character.', category='error')
+        elif len(email) < 4:
+            flash('Email must be longer than three characters.', category='error')
+        elif len(message) < 20:
+            flash('Message must be at least 20 characters in lenght.', category='success')
+        else:
+            flash('Message sent! I will get back to you shortly!', category='success')
+            mail.send(msg)
+
+    return render_template('contact.html', user=current_user)
