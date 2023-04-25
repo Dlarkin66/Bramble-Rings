@@ -23,11 +23,29 @@ body{
 
 
 /* Forms */
+.login-logout-header-tb{
+    border-top: 2px solid black;
+    width: 15%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 25px;
+    opacity: 100%;
+}
 
 .login-logout-header {
     color: black;
     font-family: 'Cinzel', serif;
     font-weight: bold;
+    font-size: 3em;
+}
+
+.login-logout-header-bb{
+    border-top: 2px solid black;
+    width: 15%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 25px;
+    opacity: 100%;
 }
 
 .btn{
@@ -85,6 +103,7 @@ body{
     border-top: 2px solid black;
     margin-top: 20px;
     margin-bottom: 5px;
+    opacity: 100%;
 } 
 
 .intro-text{
@@ -98,6 +117,7 @@ body{
     border-top: 2px solid black;
     margin-top: -5px;
     margin-bottom: 20px;
+    opacity: 100%;
 }
 
 .img-thumbnail{
@@ -110,12 +130,14 @@ body{
 .img-thumbnail:hover{
     transform: scale(.95);
     transition: .6s;
+
 }
 
 .product-title-tb{
     border-top: 2px solid black;
     width: 90%;
     margin: 10px auto 5px auto;
+    opacity: 100%;
 }
 
 .product-title{
@@ -129,12 +151,14 @@ body{
     border-top: 2px solid black;
     width: 90%;
     margin: -15px auto 15px auto;
+    opacity: 100%;
 }
 
 .product-materials{
     font-family: 'Raleway', sans-serif;
     text-align: center;
     margin-top: -5px;
+    font-weight: bold;
 }
 
 .price{
@@ -148,12 +172,14 @@ body{
 .product-price-bb{
     border: 1px solid black;
     width: 20%;
-    margin: -15px auto 15px auto;
+    margin: -15px auto 50px auto;
+    opacity: 100%;
 }
 
 .why-bramble-tb{
-    margin-top: 75px;
+    margin-top: 25px;
     border-top: 3px solid black;
+    opacity: 100%;
 }
 
 .why-bramble{
@@ -165,6 +191,7 @@ body{
 
 .why-bramble-bb{
     border-top: 3px solid black;
+    opacity: 100%;
 }
 
 .why-bramble-header-tb{
@@ -173,6 +200,7 @@ body{
     margin-top: 25px;
     margin-right: auto;
     margin-left: auto;
+    opacity: 100%;
 }
 
 .why-bramble-headers{
@@ -187,6 +215,7 @@ body{
     width:95%;
     margin-right: auto;
     margin-left: auto;
+    opacity: 100%;
 }
 
 .why-bramble-desc{
@@ -368,6 +397,7 @@ footer.show{
 .about-me-tb{
     margin-top: 50px;
     border-top: 2px solid black;
+    opacity: 100%;
 }
 
 .about-me-intro{
@@ -380,6 +410,7 @@ footer.show{
 .about-me-bb{
     margin-bottom: 50px;
     border-top: 2px solid black;
+    opacity: 100%;
 }
 
 .about-me-image{
@@ -399,6 +430,7 @@ footer.show{
 .customer-testimonial-tb{
     border: 1px solid black;
     margin-top: 50px;
+    opacity: 100%;
 }
 
 .customer-testimonials{
@@ -410,6 +442,7 @@ footer.show{
 .customer-testimonial-bb{
     border: 1px solid black;
     margin-bottom: 75px;
+    opacity: 100%;
 }
 
 .review-text{

@@ -40,6 +40,7 @@
             {% else %}
             <a class="nav-link {% if request.endpoint == 'views.home' %} active {% endif %}" aria-current="page" href="/">Home</a>
             <a class="nav-link {% if request.endpoint == 'views.about' %} active {% endif %}" aria-current="page" href="/about">About</a>
+            <a class="nav-link {% if request.endpoint == 'auth.contact' %} active {% endif %}" aria-current="page" href="/contact">Contact</a>
             <a class="nav-link {% if request.endpoint == 'auth.login' %} active {% endif %}" href="/login" color= #FF7F50>Login</a>
             <a class="nav-link {% if request.endpoint == 'auth.sign_up' %} active {% endif %}" href="/sign-up">Sign-up</a>
             {% endif %}
