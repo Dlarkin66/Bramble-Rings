@@ -22,6 +22,10 @@ def product_details(id):
 def about_me():
     return render_template('about_me.html', user=current_user)
 
+@views.route('/faq')
+def faq():
+    return render_template('faq.html', user=current_user)
+
 
 
 
