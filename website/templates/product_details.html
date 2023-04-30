@@ -34,42 +34,48 @@
         </div>
            
         <div class="description-container">
-            <h1 class="pd-name">{{ product.name }}</h1>
 
-            <hr class="divider">
+            <hr class="intro-text-tb">
+            <h1 class="intro-text">{{ product.name }}</h1>
+            <hr class="intro-text-bb">
 
             <p class="pd-price">${{ "%.2f" % product.price }}</p>
-
-            <hr class="divider-price">
-
-            <p class="pd-description">{{ product.description }}</p>
-
+            <hr class="price-bb">
+            
+            <p class="raleway-text">{{ product.description }}</p>
+            <hr class="intro-text-bb">
+            
             <form action="{{ url_for('auth.add_to_cart', product_id=product.id) }}" method="[POST]">
-                <lable for="ring-size">Ring Size:</lable>
-                <select name="ring-size" id="ring-size">
-                    <option value="5">5</option>
-                    <option value="5.5">5.5</option>
-                    <option value="6">6</option>
-                    <option value="6.5">6.5</option>
-                    <option value="7">7</option>
-                    <option value="7.5">7.5</option>
-                    <option value="8">8</option>
-                    <option value="8.5">8.5</option>
-                    <option value="9">9</option>
-                    <option value="9.5">9.5</option>
-                    <option value="10">10</option>
-                    <option value="10.5">10.5</option>
-                    <option value="11">11</option>
-                    <option value="11.5">11.5</option>
-                    <option value="12">12</option>
-                    <option value="12.5">12.5</option>
-                    <option value="13">13</option>
-                    <option value="13.5">13.5</option>
-                    <option value="14">14</option>
-                </select>
+                <div class="ring-size-container">
+                    <lable for="ring-size" class="ring-size-label">Ring Size :</lable>
+                    <select name="ring-size" id="ring-size" class="ring-size-select">
+                        <option disabled selected value></option>
+                        <option value="5">5</option>
+                        <option value="5.5">5.5</option>
+                        <option value="6">6</option>
+                        <option value="6.5">6.5</option>
+                        <option value="7">7</option>
+                        <option value="7.5">7.5</option>
+                        <option value="8">8</option>
+                        <option value="8.5">8.5</option>
+                        <option value="9">9</option>
+                        <option value="9.5">9.5</option>
+                        <option value="10">10</option>
+                        <option value="10.5">10.5</option>
+                        <option value="11">11</option>
+                        <option value="11.5">11.5</option>
+                        <option value="12">12</option>
+                        <option value="12.5">12.5</option>
+                        <option value="13">13</option>
+                        <option value="13.5">13.5</option>
+                        <option value="14">14</option>
+                    </select>
+                </div>
             </form>
 
-            <a href="{{ url_for('auth.add_to_cart', product_id=product.id) }}">Add to cart</a>
+            <a href="{{ url_for('auth.add_to_cart', product_id=product.id) }}" class="add-to-cart">Add to cart</a>
+
+            <p class="raleway-text have-any-questions-text">Have any questions? Head over to the <a href="/faq" target="blank">FAQ</a> or reach out to me directly throught my <a href="/contact" target="blank">Contact</a> page!</p>
 
             {% if user.is_authenticated and user.email == admin %}
                 <a href="{{ url_for('auth.edit_product', id=product.id) }}">Edit</a>
@@ -77,6 +83,56 @@
 
         </div>
     </div>
+    
+    <br>
+    <hr class="intro-text-tb">
+    <h1 class="intro-text">Packaging</h1>
+    <hr class="intro-text-bb">
+    <br>
+   
+
+    <div class="packaging-container">
+        <div class="packaging-image-container">
+            <img src="https://lh3.googleusercontent.com/drive-viewer/AFGJ81pwaP1b9QV1exlOlhpGnws4-SFDkeKo1Cgz17gzNKI0N-8lF-5BQ7htE9Rmy2ib6a73L-Agsgsuae_KahCnFVVtLoyLWg=s1600" class="packaging-image">
+        </div>
+
+        <div class="packaging-description-container">
+            <p class="raleway-text form-border">All Bramble Rings arrive in a beautifully packaged set that includes a wax sealed letter, Bramble stickers, and info card! The ring itself will be safely tucked away in a fully recyclable ring box stamped with my makers mark. Everything is then carefully placed into a bubble mailer and shipped out!</p>
+        </div>
+    </div>
+
+    
+    <br>
+    <hr class="intro-text-tb">
+    <h1 class="intro-text">Store Policies</h1>
+    <hr class="intro-text-bb">
+    <br>
+
+    
+    <div class="form-border">
+        <h2 class="question">Cancellations</h2>
+        <hr class="question-bb">
+        <p class="raleway-text">While I don't typically accept cancellations, I'm always willing to try and help resolve any issues you may have with your order. Simply reach out to me and I'll do everything I can to make things right!</p>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="form-border">
+        <h2 class="question">Size Exchanges</h2>
+        <hr class="question-bb">
+        <p class="raleway-text">I'm unable to process size exchanges, if I ship you the wrong size however, I'm happy to send you a replacement completely free of charge!</p> 
+    </div>
+
+    <br>
+    <br>
+
+    <div class="form-border">
+        <h2 class="question">Refunds and Replacements</h2>
+        <hr class="question-bb">
+        <p class="raleway-text">I'm only able to offer refunds or replacements in the event that your item is lost or damaged during shipping.</p>
+    </div>
+
 
     <script >
         var thumbnails = document.querySelectorAll('.thumbnail');
