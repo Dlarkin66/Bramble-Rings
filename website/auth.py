@@ -78,27 +78,31 @@ def cart():
     for product_id, item in cart.items():
         product = Product.query.get(product_id)
         total_price += item['price'] * item['quantity']
-        cart_items.append({'product': product, 'quantity': item['quantity'], 'price': item['price']})
+        cart_items.append({'product': product, 'quantity': item['quantity'], 'price': item['price'], 'size': item['size']})
     
     return render_template('cart.html', cart_items=cart_items, total_price=total_price, user=current_user)
 
 
-
-@auth.route('/add_to_cart/<int:product_id>')
+@auth.route('/add_to_cart/<int:product_id>', methods=["GET", "POST"])
 @login_required
 def add_to_cart(product_id):
     product = Product.query.get(product_id)
     cart = session.get('cart', {})
+    ring_size = request.form.get("ring-size")
 
-    if str(product_id) in cart:
+
+    if ring_size == None:
+        flash('Please select a ring size.', category='success')
+        return redirect(url_for('views.product_details', id=product_id))
+    elif str(product_id) in cart:
         cart[str(product_id)]['quantity'] += 1
     else:
-        cart[str(product_id)] = {'name': product.name, 'price': product.price, 'quantity': 1}
+        cart[str(product_id)] = {'name': product.name, 'price': product.price, 'quantity': 1, 'size': ring_size}
 
+    
     session['cart'] = cart
 
     return redirect(url_for('auth.cart'))
-
 
 @auth.route('/add-product', methods=['GET', 'POST'])
 @login_required

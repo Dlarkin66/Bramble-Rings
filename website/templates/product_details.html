@@ -45,7 +45,7 @@
             <p class="raleway-text">{{ product.description }}</p>
             <hr class="intro-text-bb">
             
-            <form action="{{ url_for('auth.add_to_cart', product_id=product.id) }}" method="[POST]">
+            <form action="{{ url_for('auth.add_to_cart', product_id=product.id) }}" method="POST">
                 <div class="ring-size-container">
                     <lable for="ring-size" class="ring-size-label">Ring Size :</lable>
                     <select name="ring-size" id="ring-size" class="ring-size-select">
@@ -70,10 +70,9 @@
                         <option value="13.5">13.5</option>
                         <option value="14">14</option>
                     </select>
-                </div>
+                </div> 
+                <button type="submit" class="add-to-cart">Add to cart</button>
             </form>
-
-            <a href="{{ url_for('auth.add_to_cart', product_id=product.id) }}" class="add-to-cart">Add to cart</a>
 
             <p class="raleway-text have-any-questions-text">Have any questions? Head over to the <a href="/faq" target="blank">FAQ</a> or reach out to me directly throught my <a href="/contact" target="blank">Contact</a> page!</p>
 
