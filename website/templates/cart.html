@@ -14,6 +14,10 @@
       <p>${{ "%.2f" % item.price }}</p>
       <p>{{ item.quantity }}</p>
       <p>{{ item.size }}</p>
+      <form action="{{ url_for('auth.remove_from_cart', product_id=item.product.id) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit" class="btn">Remove</button>
+      </form>
     </div>
   {% endif %}
 {% endfor %}
