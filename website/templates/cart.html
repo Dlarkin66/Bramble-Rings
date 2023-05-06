@@ -14,9 +14,9 @@
       <p>${{ "%.2f" % item.price }}</p>
       <p>{{ item.quantity }}</p>
       <p>{{ item.size }}</p>
-      <form action="{{ url_for('auth.remove_from_cart', product_id=item.product.id) }}" method="post">
-        <input type="hidden" name="_method" value="DELETE">
+      <form action="{{ url_for('auth.remove_from_cart', product_id=item.product.id, product_size=float(item.size)) }}" method="POST">
         <button type="submit" class="btn">Remove</button>
+        <p>Product ID: {{ float(item.size) }}</p>
       </form>
     </div>
   {% endif %}

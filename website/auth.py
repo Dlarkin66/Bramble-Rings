@@ -78,7 +78,7 @@ def add_to_cart(product_id):
     ring_size = request.form.get("ring-size")
 
     if ring_size == None:
-        flash('Please select a ring size.', category='success')
+        flash('Please select a ring size.', category='error')
         return redirect(url_for('views.product_details', id=product_id))
     else:
         cart_key = str(product_id) + '_' + ring_size
@@ -88,17 +88,6 @@ def add_to_cart(product_id):
             cart[cart_key] = {'name': product.name, 'price': product.price, 'quantity': 1, 'size': ring_size}
     
     session['cart'] = cart
-    return redirect(url_for('auth.cart'))
-
-
-@auth.route('/remove_from_cart/<int:product_id>', methods=["POST"])
-@login_required
-def remove_from_cart(product_id):
-    cart = session.get('cart', {})
-    if str(product_id) in cart:
-        del cart[str(product_id)]
-    session['cart'] = cart
-    flash('Item removed from cart!', category='success')
     return redirect(url_for('auth.cart'))
 
 
@@ -115,15 +104,29 @@ def cart():
         total_price += item['price'] * item['quantity']
         cart_items.append({'product': product, 'quantity': item['quantity'], 'price': item['price'], 'size': item['size']})
     
-    return render_template('cart.html', cart_items=cart_items, total_price=total_price, user=current_user)
+    return render_template('cart.html', cart_items=cart_items, total_price=total_price, user=current_user, float=float)
 
+
+@auth.route('/remove_from_cart/<int:product_id>/<int:product_size>', methods=["POST"])
+@login_required
+def remove_from_cart(product_id, product_size):
+    cart = session.get('cart', {})
+    print(f"Current cart: {cart}")
+    if f"{product_id}_{product_size}" in cart:
+        del cart[f"{product_id}_{product_size}"]
+        session['cart'] = cart
+        flash('Item removed from cart!', category='success')
+        return redirect(url_for('auth.cart'))
+    else:
+        return "error"
+
+ 
 
 @auth.route('/add-product', methods=['GET', 'POST'])
 @login_required
 def add_product():
     if current_user.email != secret.admin:
         abort(403)
-
     if request.method == 'POST':
         name = request.form['name']
         price = request.form['price']
