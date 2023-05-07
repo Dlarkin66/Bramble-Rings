@@ -86,10 +86,11 @@ def add_to_cart(product_id):
             cart[cart_key]['quantity'] += 1
         else:
             cart[cart_key] = {'name': product.name, 'price': product.price, 'quantity': 1, 'size': ring_size}
+        flash('Item added to cart!', category='success')
     
     session['cart'] = cart
-    return redirect(url_for('auth.cart'))
-
+    return redirect(url_for('views.product_details', id=product_id))
+ 
 
 @auth.route('/cart')
 @login_required
@@ -107,18 +108,18 @@ def cart():
     return render_template('cart.html', cart_items=cart_items, total_price=total_price, user=current_user, float=float)
 
 
-@auth.route('/remove_from_cart/<int:product_id>/<int:product_size>', methods=["POST"])
+@auth.route('/remove_from_cart/<int:product_id>/<float:product_size>', methods=["POST"])
 @login_required
 def remove_from_cart(product_id, product_size):
     cart = session.get('cart', {})
-    print(f"Current cart: {cart}")
     if f"{product_id}_{product_size}" in cart:
         del cart[f"{product_id}_{product_size}"]
         session['cart'] = cart
         flash('Item removed from cart!', category='success')
         return redirect(url_for('auth.cart'))
     else:
-        return "error"
+        flash('There was an error removing the item, please refresh the page and try again.', category='error')
+        return redirect(url_for('auth.cart'))
 
  
 

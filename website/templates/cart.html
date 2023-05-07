@@ -2,24 +2,25 @@
 
 {% block content %}
 
-<h1>Your Cart</h1>
+<hr class="intro-text-tb">
+<h1 class="intro-text">Your Cart</h1>
+<hr class="intro-text-bb">
 
 {% for item in cart_items %}
   {% if item.product %}
-    <div class="column">
+    <div class="cart">
       <a href="{{ url_for('views.product_details', id=item.product.id) }}">
-        <img src="{{ item.product.image_url }}" alt="{{ item.name }}" class="img-thumbnail mx-auto"/>
+        <img src="{{ item.product.image_url }}" alt="{{ item.name }}" class="cart-image mx-auto"/>
       </a>
-      <p>{{ item.product.name }}</p>
-      <p>${{ "%.2f" % item.price }}</p>
-      <p>{{ item.quantity }}</p>
-      <p>{{ item.size }}</p>
+      <p class="cart-text item-name">{{ item.product.name }}</p>
+      <p class="cart-text">Price: ${{ "%.2f" % item.price }}</p> 
+      <p class="cart-text">Quantity: {{ item.quantity }}</p>
+      <p class="cart-text">Ring Size: {{ item.size }}</p>
       <form action="{{ url_for('auth.remove_from_cart', product_id=item.product.id, product_size=float(item.size)) }}" method="POST">
         <button type="submit" class="btn">Remove</button>
-        <p>Product ID: {{ float(item.size) }}</p>
       </form>
     </div>
   {% endif %}
 {% endfor %}
-<p>Total Price: ${{ "%.2f" % total_price }}</p>
+<p class="total-price">Total Price: ${{ "%.2f" % total_price }}</p>
 {% endblock %}
