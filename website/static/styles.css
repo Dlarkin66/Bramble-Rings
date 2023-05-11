@@ -604,14 +604,26 @@ option:hover{
 .cart-text {
     margin: 0 10px;
     font-size: 16px; 
-    font-family: 'Raleway', 'sans-serif';
+    font-family: 'Cinzel', 'serif';
     font-weight: bold;
     text-align: center;
   }
 
 .total-price{
     text-align: end;
+    font-family: 'Cinzel', 'Serif';
+    font-weight: bold;
 }
 
+.remove-btn{
+    font-family: 'Cinzel', 'Serif';
+    font-weight: bold;
+    margin-top: -1px;
+}
+
+.cart-divider{
+    border-top: 2px solid black;
+    opacity: 100%;
+}
 
   

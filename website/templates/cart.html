@@ -17,10 +17,11 @@
       <p class="cart-text">Quantity: {{ item.quantity }}</p>
       <p class="cart-text">Ring Size: {{ item.size }}</p>
       <form action="{{ url_for('auth.remove_from_cart', product_id=item.product.id, product_size=float(item.size)) }}" method="POST">
-        <button type="submit" class="btn">Remove</button>
+        <button type="submit" class="btn remove-btn">Remove</button>
       </form>
     </div>
+    <hr class="cart-divider">
   {% endif %}
 {% endfor %}
-<p class="total-price">Total Price: ${{ "%.2f" % total_price }}</p>
+<p class="total-price">Total: ${{ "%.2f" % total_price }}</p>
 {% endblock %}
