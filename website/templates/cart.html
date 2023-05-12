@@ -23,5 +23,18 @@
     <hr class="cart-divider">
   {% endif %}
 {% endfor %}
+
 <p class="total-price">Total: ${{ "%.2f" % total_price }}</p>
+<button type="submit" id="buy-now-btn">Buy Now</button>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+  const checkout_public_key = '{{ checkout_public_key }}';
+  const checkout_session_id = '{{ checkout_session_id }}';
+</script>
+
+<script src="{{ url_for('static', filename='script-no-ajax.js') }}"></script>
+
 {% endblock %}
+

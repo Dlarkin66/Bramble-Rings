@@ -14,6 +14,8 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = secret.secret_key
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['STRIPE_PUBLIC_KEY'] = "pk_test_51N6HKxLW7Q4gXOtz84S5EXWUIXk3tVHvjMrxACoWQMCtT6b3J9DErPDR9EemqkDiJllTXomaEKMkmRMf4i11bu2900M3k3YXi1"
+    app.config['STRIPE_SECRET_KEY'] = secret.stripe_secret_key
     db.init_app(app)
 
 
