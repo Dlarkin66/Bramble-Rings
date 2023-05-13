@@ -190,17 +190,7 @@ def cart():
     cart = session.get('cart', {})
     cart_items = []
     total_price = 0
-
-    stripe_session = stripe.checkout.Session.create(
-        payment_method_types=['card'],
-        line_items=[{
-            'price': 'price_1N6zAwLW7Q4gXOtz9I6Cs4gf',
-            'quantity': 1,
-        }],
-        mode='payment',
-        success_url=url_for('views.home', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
-        cancel_url=url_for('auth.cart', _external=True)
-    )
+    line_items = []
 
     for cart_key, item in cart.items():
         product_id, ring_size = cart_key.split('_')
@@ -212,6 +202,22 @@ def cart():
             'price': item['price'],
             'size': item['size']
         })
+        line_items.append({
+            'price': product.stripe_price_id,
+            'quantity': item['quantity']
+        })
+
+    if not line_items:
+        return render_template('cart.html', cart_items=cart_items, total_price=total_price, user=current_user, float=float)
+
+    
+    stripe_session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=line_items,
+        mode='payment',
+        success_url=url_for('views.home', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url=url_for('auth.cart', _external=True)
+    )
     
     return render_template(
         'cart.html',
@@ -267,6 +273,7 @@ def add_product():
     if request.method == 'POST':
         name = request.form['name']
         price = request.form['price']
+        stripe_price_id = request.form['stripe_price_id']
         description = request.form['description']
         materials = request.form.get('materials')
         image_url = request.form['image_url']
@@ -277,6 +284,7 @@ def add_product():
         new_product = Product(
             name=name,
             price=price,
+            stripe_price_id=stripe_price_id,
             description=description,
             materials=materials,
             image_url=image_url,
@@ -333,6 +341,7 @@ def edit_product(id):
         name = request.form.get('name')
         description = request.form.get('description')
         price = request.form.get('price')
+        stripe_price_id = request.form.get('stripe_price_id')
         materials = request.form.get('materials')
         image_url = request.form.get('image_url')
         image_url_2 = request.form.get('image_url_2')
@@ -342,6 +351,7 @@ def edit_product(id):
         product.name = name
         product.description = description
         product.price = price
+        product.stripe_price_id = stripe_price_id
         product.materials = materials
         product.image_url = image_url
         product.image_url_2 = image_url_2
