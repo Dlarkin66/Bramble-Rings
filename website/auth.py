@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, abort, session
+from flask import Blueprint, render_template, request, flash, redirect, url_for, abort, session, request
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 from flask_mail import Mail, Message
@@ -215,7 +215,7 @@ def cart():
         payment_method_types=['card'],
         line_items=line_items,
         mode='payment',
-        success_url=url_for('views.home', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
+        success_url=url_for('auth.thank_you', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url=url_for('auth.cart', _external=True)
     )
     
@@ -227,6 +227,16 @@ def cart():
         checkout_session_id=stripe_session['id'],
         checkout_public_key="pk_test_51N6HKxLW7Q4gXOtz84S5EXWUIXk3tVHvjMrxACoWQMCtT6b3J9DErPDR9EemqkDiJllTXomaEKMkmRMf4i11bu2900M3k3YXi1"
     )
+
+
+@auth.route('/thank_you')
+@login_required
+def thank_you():
+    return render_template(
+        'thank_you.html',
+        user=current_user
+    )
+    
 
 
 @auth.route('/remove_from_cart/<int:product_id>/<float:product_size>', methods=["POST"])
@@ -424,4 +434,42 @@ def contact():
         user=current_user
     )
 
+
+@auth.route('/stripe_webhook', methods=['POST'])
+def stripe_webhook():
+    print('WEBHOOK CALLED')
+
+    if request.content_length > 1024 * 1024:
+        print('REQUEST TO BIG')
+        abort(400)
+
+    payload = request.get_data()
+    sig_header = request.environ.get['HTTP_STRIPE_SIGNATURE']
+    endpoint_secret = '' #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload,
+            sig_header,
+            endpoint_secret
+        )
+
+    except ValueError as e:
+        #Invalid payload
+        print('INVALID PAYLOAD')
+        return {}, 400
+    
+    except stripe.error.SignatureVerificationError as e:
+        #Invalid signature
+        print('INVALID SIGNATURE')
+        return {}, 400
+    
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        print(session)
+        line_items = stripe.checkout.Session.list_line_items(session['id'], limit= 40)
+        print(line_items['data'][0]['description'])
+
+    return {}
 

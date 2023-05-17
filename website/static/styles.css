@@ -65,6 +65,9 @@ a{
     border-color: black;
 }
 
+
+
+
 .form-control{
     border-color: black;
 }
@@ -292,6 +295,40 @@ footer.show{
 
 .bi-tiktok{
     color: black;
+}
+
+@media only screen and (max-width: 767px) {
+    .home-banner {
+        height: 50vh;
+        width: auto;
+    }
+
+    .intro-text{
+        font-size: 1.5em;
+    }
+
+    .product-price-bb{
+        border: 1px solid black;
+        width: 20%;
+        margin: -15px auto 25px auto;
+        opacity: 100%;
+    }
+
+    .why-bramble-bb{
+        border-top: 3px solid black;
+        opacity: 100%;
+        margin-bottom: 50px;
+    }
+
+    .why-bramble{
+       font-size: 1.5em;
+    }
+    
+    .why-bramble-headers{
+        font-size: 1.5em;
+    }
+    
+
 }
 
 
@@ -551,6 +588,70 @@ option:hover{
     border-right: 3px solid black;
 }
 
+
+@media only screen and (max-width: 767px) {
+    .about-section-container{
+        display: block;
+    }
+
+
+    .image-container{
+        width: 100%;
+        display: block;
+    }
+
+
+    .about-me-text-container{
+        width: 100%;
+        display: block;
+        margin-top: 50px;
+        padding: 0, 10, 0, 10;
+    }
+
+
+    .about-me-intro{
+        font-size: 1.5em;
+    }
+
+
+    .about-me-image{
+        width: 100%;
+        height: auto;
+    }
+
+
+    .raleway-text{
+        font-size: 16px;
+    }
+
+
+    .customer-testimonials{
+        font-size: 1.5em;
+    }
+
+
+    .customer-testimonial-bb{
+        margin-bottom: 50px;
+    }
+
+
+    .review-text{
+        width: 100%;
+        height: auto;
+        font-size: 16px;
+        padding: 10px;
+    }
+  
+
+    .reviews img{
+        display: block;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 3px solid black;
+    }
+}
+
 /* Contact Us */
 
 .contact-header{
@@ -626,4 +727,10 @@ option:hover{
     opacity: 100%;
 }
 
-  
+
+/* Thank you page */
+
+.thank-you-div{
+ text-align: center;
+
+}
