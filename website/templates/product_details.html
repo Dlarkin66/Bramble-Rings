@@ -42,7 +42,7 @@
             <p class="pd-price">${{ "%.2f" % product.price }}</p>
             <hr class="price-bb">
             
-            <p class="raleway-text">{{ product.description }}</p>
+            <p class="raleway-text product-description">{{ product.description }}</p>
             <hr class="intro-text-bb">
             
             <form action="{{ url_for('auth.add_to_cart', product_id=product.id) }}" method="POST">
@@ -84,7 +84,7 @@
     </div>
     
     <br>
-    <hr class="intro-text-tb">
+    <hr class="intro-text-tb packaging-txt-tb">
     <h1 class="intro-text">Packaging</h1>
     <hr class="intro-text-bb">
     <br>

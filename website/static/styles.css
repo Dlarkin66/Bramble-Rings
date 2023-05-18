@@ -66,8 +66,6 @@ a{
 }
 
 
-
-
 .form-control{
     border-color: black;
 }
@@ -96,6 +94,17 @@ a{
     border-radius: 5px;
 }
 
+
+@media only screen and (max-width: 767px){
+    .login-logout-header-tb{
+        width: 75%;
+    }
+
+
+    .login-logout-header-bb{
+        width: 75%;
+    }
+}
 
 /* Home-page */
 .home-banner{
@@ -485,6 +494,87 @@ option:hover{
 }
 
 
+@media only screen and (max-width: 767px){
+
+    .product-container{
+        display: block;
+    }
+
+    .gallery-container{
+        width: 100%;
+        height: auto;
+    }
+
+    .description-container{
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .active-photo{
+        width: 100%;
+        height: auto;
+    }
+
+    .gallery {
+        flex-wrap: wrap;
+    }
+
+    .thumbnail{
+        flex: 0 0 calc(33.33% - 10px);
+        max-width: calc(33.33% - 10px);
+        margin-right: 10px;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .thumbnail:nth-child(2){
+        margin-right: auto;
+    }
+
+    .thumbnail:last-child{
+        margin-right: 0;
+        margin-left: 5px;
+    }
+
+    .thumbnail img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .price-bb{
+        width: 33%;
+        margin-bottom: 25px;
+    }
+
+    .pd-price{
+        margin-top: -5px;
+        font-size: 1.5em;
+    }
+
+    .product-description{
+        padding-bottom: 15px;
+    }
+
+    .ring-size-container{
+        display: inline-block;
+    }
+
+    .add-to-cart{
+        margin-left: 25px;
+    }
+
+    .have-any-questions-text{
+        margin-top: 50px;
+    }
+
+    .packaging-txt-tb{
+        margin-top: 0;
+    }
+}
+
+
 
 
 
@@ -665,6 +755,13 @@ option:hover{
     padding: 25px 0 25px 0;
 }
 
+@media only screen and (max-width: 767px){
+    .contact-us-txt{
+        font-size: 16px;
+    }
+}
+
+
 /* fAQ */
 
 .question-tb{
@@ -683,6 +780,18 @@ option:hover{
     font-weight: bold;
     font-size: 2em;
     text-align: center;
+}
+
+
+@media only screen and (max-width: 767px){
+    .question{
+        font-size: 1.5em;
+    }
+
+    .question-bb{
+        width: 100%;
+        margin-bottom: 25px;
+    }
 }
 
 /* cart */
