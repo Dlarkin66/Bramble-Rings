@@ -28,7 +28,7 @@ a{
 
 /* Forms */
 .login-logout-header-tb{
-    border-top: 2px solid black;
+    border-top: 1px solid black;
     width: 15%;
     margin-right: auto;
     margin-left: auto;
@@ -44,7 +44,7 @@ a{
 }
 
 .login-logout-header-bb{
-    border-top: 2px solid black;
+    border-top: 1px solid black;
     width: 15%;
     margin-right: auto;
     margin-left: auto;
@@ -100,6 +100,9 @@ a{
         width: 75%;
     }
 
+    .login-logout-header{
+        font-size: 1.5em;
+    }
 
     .login-logout-header-bb{
         width: 75%;
@@ -108,7 +111,7 @@ a{
 
 /* Home-page */
 .home-banner{
-    height: 100vh;
+    height: 95vh;
     width: 100vw;
     object-fit: cover;
     padding-bottom: 10px;
@@ -354,7 +357,6 @@ footer.show{
     height: 30vw;
     margin-top: 20px;
     object-fit: cover;
-    border: 3px solid black;
     border-radius: 5px;
 }
 
@@ -467,7 +469,6 @@ option:hover{
 .packaging-image{
     width: 75%;
     height: auto;
-    border: 3px solid black;
     border-radius: 5px;
     margin: 0 auto 0 auto;
     
@@ -532,10 +533,11 @@ option:hover{
     .price-bb{
         width: 33%;
         margin-bottom: 25px;
+        border-width: 1px;
     }
 
     .pd-price{
-        margin-top: -5px;
+        margin-top: -30px;
         font-size: 1.5em;
     }
 
@@ -557,6 +559,26 @@ option:hover{
 
     .packaging-txt-tb{
         margin-top: 0;
+    }
+
+    .packaging-container{
+        display: block;
+        width: 100%;
+    }
+
+    .packaging-image-container{
+        width: 100%;
+    }
+
+    .packaging-image{
+        margin-top: -15px;
+        width: 100%;
+    }
+
+    .packaging-description-container{
+        width: 100%;
+        margin-top: 25px;
+        margin-bottom: -25px;
     }
 }
 
@@ -744,18 +766,23 @@ option:hover{
     .contact-us-txt{
         font-size: 16px;
     }
+
+    .contact-header{
+        padding-top: 1px;
+        margin-bottom: -30px;
+    }
 }
 
 
 /* fAQ */
 
 .question-tb{
-    border-top: 2px solid black;
+    border-top: 1px solid black;
     opacity: 100%;
 }
 
 .question-bb{
-    border-top: 2px solid black;
+    border-top: 1px solid black;
     opacity: 100%;
     margin-bottom: 50px;
 }
