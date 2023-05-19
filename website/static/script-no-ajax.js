@@ -1,6 +1,6 @@
 var stripe = Stripe(checkout_public_key);
 
-const button = document.querySelector('#buy-now-btn');
+const button = document.querySelector('#checkout-btn');
 
 button.addEventListener('click', event => {
     stripe.redirectToCheckout({

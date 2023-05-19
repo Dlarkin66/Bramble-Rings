@@ -35,7 +35,7 @@
            
         <div class="description-container">
 
-            <hr class="intro-text-tb">
+            <hr class="intro-text-tb product-name-tb">
             <h1 class="intro-text">{{ product.name }}</h1>
             <hr class="intro-text-bb">
 
@@ -43,7 +43,7 @@
             <hr class="price-bb">
             
             <p class="raleway-text product-description">{{ product.description }}</p>
-            <hr class="intro-text-bb">
+            <hr class="intro-text-bb product-description-bb">
             
             <form action="{{ url_for('auth.add_to_cart', product_id=product.id) }}" method="POST">
                 <div class="ring-size-container">

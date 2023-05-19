@@ -379,16 +379,20 @@ footer.show{
     text-align: center;
 }
 
+.product-name-tb{
+    margin-top: 20px;
+}
+
+.product-description-bb{
+    margin-bottom: 0;
+}
+
 .have-any-questions-text{
     margin-top: 100px;
 }
 
-.divider{
-    border-top: 3px solid black;
-}
-
 .price-bb{
-    border-top: 3px solid black;
+    border-top: 1px solid black;
     width: 15%;
     margin-left: auto;
     margin-right: auto;
@@ -401,6 +405,7 @@ footer.show{
     font-family: 'cinzel', serif;
     font-size: 25px;
     font-weight: bold;
+    margin-top: -30px;
 }
 
 .ring-size-container{
@@ -412,14 +417,14 @@ footer.show{
     font-family: 'Cinzel', serif;
     font-weight: bold;
     padding-right: 10px;
-    padding-top: 3px;
-    
+    margin-top: 10px;
 }
 
 .ring-size-select{
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 5px;
     align-items: flex-start;
+    margin-top: 10px;
 }
 
 option{
@@ -435,7 +440,6 @@ option:hover{
 .add-to-cart{
     display: inline-block;
     text-align: center;
-    margin-top: 20px;
     padding: 10px 20px;
     background-color: black;
     color: white;
@@ -445,6 +449,7 @@ option:hover{
     font-weight: bold;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
     transition: 0.6s;
+    margin-top: -10px;
 }
 
 .add-to-cart:hover{
@@ -808,28 +813,33 @@ option:hover{
 
 /* cart */
 
-.cart {
+.cart{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 20px 0;
-  }
+}
   
-.cart-image {
+.cart-image{
     width: 15vw;
     height: auto;
     object-fit: contain;
-    border: 3px solid black;
     border-radius: 5px;
-  }
+}
+
+.item-name{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Cinzel', 'Serif';
+}
   
-.cart-text {
-    margin: 0 10px;
+.cart-text{
     font-size: 16px; 
     font-family: 'Cinzel', 'serif';
     font-weight: bold;
     text-align: center;
-  }
+}
 
 .total-price{
     text-align: end;
@@ -840,12 +850,67 @@ option:hover{
 .remove-btn{
     font-family: 'Cinzel', 'Serif';
     font-weight: bold;
-    margin-top: -1px;
+    margin-top: -15px;
 }
 
 .cart-divider{
-    border-top: 2px solid black;
+    border-top: 1px solid black;
     opacity: 100%;
+}
+
+.checkout-btn{
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    transition: 0.6s;
+}
+
+@media only screen and (max-width: 767px){
+    .cart{
+        display: block;
+        flex-wrap: wrap;
+    }
+
+    .cart-image{
+        width: 100%;
+    }
+
+    .item-name{
+        display: block;
+        margin-top: 10px;
+        font-size: 1.5em;
+    }
+
+    .cart-text{
+        display: inline-block;
+        font-size: 16px;
+        font-family: 'Raleway', 'sans-serif';
+        font-weight: 400;
+        margin-left: 20px;
+        margin-right: auto;
+    }
+
+    .remove-btn{
+        display: block;
+        margin: 10px auto;
+    }
+
+    .total-price{
+        text-align: center;
+        font-size: 1.5em;
+        margin: 25px 0px;
+    }
+
+    .checkout-btn{
+        margin-top: 50px;
+    }
 }
 
 

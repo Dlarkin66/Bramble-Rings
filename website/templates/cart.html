@@ -10,12 +10,12 @@
   {% if item.product %}
     <div class="cart">
       <a href="{{ url_for('views.product_details', id=item.product.id) }}">
-        <img src="{{ item.product.image_url }}" alt="{{ item.name }}" class="cart-image mx-auto"/>
+        <img src="{{ item.product.image_url }}" alt="{{ item.name }}" class="cart-image img-thumbnail mx-auto"/>
       </a>
-      <p class="cart-text item-name">{{ item.product.name }}</p>
+      <p class=" item-name">{{ item.product.name }}</p>
       <p class="cart-text">Price: ${{ "%.2f" % item.price }}</p> 
-      <p class="cart-text">Quantity: {{ item.quantity }}</p>
       <p class="cart-text">Ring Size: {{ item.size }}</p>
+      <p class="cart-text">Quantity: {{ item.quantity }}</p>
       <form action="{{ url_for('auth.remove_from_cart', product_id=item.product.id, product_size=float(item.size)) }}" method="POST">
         <button type="submit" class="btn remove-btn">Remove</button>
       </form>
@@ -25,7 +25,7 @@
 {% endfor %}
 
 <p class="total-price">Total: ${{ "%.2f" % total_price }}</p>
-<button type="submit" class='add-to-cart' id="buy-now-btn">Buy Now</button>
+<button type="submit" class='checkout-btn' id="checkout-btn">Proceed To Checkout</button>
 
 <script src="https://js.stripe.com/v3/"></script>
 
