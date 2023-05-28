@@ -10,7 +10,7 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def home():
-    products = Product.query.all()
+    products = Product.query.order_by(Product.order).all()
     return render_template("home.html", products=products, user=current_user, admin=admin)
 
 @views.route('/product/<int:id>')

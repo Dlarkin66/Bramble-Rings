@@ -214,6 +214,7 @@ def cart():
     stripe_session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=line_items,
+        shipping_address_collection={'allowed_countries': ['US']},
         mode='payment',
         success_url=url_for('auth.thank_you', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url=url_for('auth.cart', _external=True)
@@ -232,6 +233,10 @@ def cart():
 @auth.route('/thank_you')
 @login_required
 def thank_you():
+
+    session_id = request.args.get('session_id')
+    session.pop('cart', None)
+
     return render_template(
         'thank_you.html',
         user=current_user
@@ -283,6 +288,7 @@ def add_product():
     if request.method == 'POST':
         name = request.form['name']
         price = request.form['price']
+        order = request.form['order']
         stripe_price_id = request.form['stripe_price_id']
         description = request.form['description']
         materials = request.form.get('materials')
@@ -294,6 +300,7 @@ def add_product():
         new_product = Product(
             name=name,
             price=price,
+            order=order,
             stripe_price_id=stripe_price_id,
             description=description,
             materials=materials,
@@ -351,6 +358,7 @@ def edit_product(id):
         name = request.form.get('name')
         description = request.form.get('description')
         price = request.form.get('price')
+        order = request.form.get('order')
         stripe_price_id = request.form.get('stripe_price_id')
         materials = request.form.get('materials')
         image_url = request.form.get('image_url')
@@ -361,6 +369,7 @@ def edit_product(id):
         product.name = name
         product.description = description
         product.price = price
+        product.order = order
         product.stripe_price_id = stripe_price_id
         product.materials = materials
         product.image_url = image_url

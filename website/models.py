@@ -13,6 +13,7 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     price = db.Column(db.Float)
+    order = db.Column(db.Integer)
     stripe_price_id = db.Column(db.String(200))
     description = db.Column(db.Text)
     materials = db.Column(db.Text)

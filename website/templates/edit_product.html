@@ -20,6 +20,11 @@
     </div>
 
     <div class="form-group">
+      <label for="order">Order</label>
+      <input type="number" class="form-control" id="order" name="order" value="{{ product.order }}" required>
+    </div>
+
+    <div class="form-group">
       <label for="stripe_price_id">Stripe Price ID</label>
       <input type="text" class="form-control" id="stripe_price_id" name="stripe_price_id" value="{{ product.stripe_price_id }}" >
     </div>
