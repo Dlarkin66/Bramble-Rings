@@ -8,8 +8,7 @@ from .models import User, Product
 from . import db
 from . import secret
 
-
-
+ 
 auth = Blueprint('auth', __name__)
 mail = Mail()
 stripe.api_key = secret.stripe_secret_key
@@ -226,7 +225,7 @@ def cart():
         total_price=total_price,
         user=current_user, float=float,
         checkout_session_id=stripe_session['id'],
-        checkout_public_key="pk_test_51N6HKxLW7Q4gXOtz84S5EXWUIXk3tVHvjMrxACoWQMCtT6b3J9DErPDR9EemqkDiJllTXomaEKMkmRMf4i11bu2900M3k3YXi1"
+        checkout_public_key="pk_live_51N6HKxLW7Q4gXOtz6rxys8vMr1VSjaIE8dbVrroot5HFOFyZQJVpnlL5hZidkoBDo4WHhcNP8eBx63VNdSFoylke00WbbE7t1x"
     )
 
 
@@ -453,8 +452,8 @@ def stripe_webhook():
         abort(400)
 
     payload = request.get_data()
-    sig_header = request.environ.get['HTTP_STRIPE_SIGNATURE']
-    endpoint_secret = '' #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    sig_header = request.environ.get('HTTP_STRIPE_SIGNATURE')
+    endpoint_secret = 'whsec_c3e95993a93989240fb35ac66632443be1cdc6c7f24183bf0b762f8534bfdd09'
     event = None
 
     try:
@@ -481,4 +480,6 @@ def stripe_webhook():
         print(line_items['data'][0]['description'])
 
     return {}
+
+
 
