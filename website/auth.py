@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 from flask_mail import Mail, Message
 import stripe
+import os
 
 from .models import User, Product
 from . import db
@@ -11,7 +12,7 @@ from . import secret
  
 auth = Blueprint('auth', __name__)
 mail = Mail()
-stripe.api_key = secret.stripe_secret_key
+stripe.api_key = os.environ.get('STRIPE_SECRET_KEY', secret.stripe_secret_key)
 
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
@@ -281,7 +282,7 @@ def remove_from_cart(product_id, product_size):
 @login_required
 def add_product():
 
-    if current_user.email != secret.admin:
+    if current_user.email != os.environ.get('ADMIN_SECRET_KEY', secret.admin):
         abort(403)
 
     if request.method == 'POST':
@@ -329,7 +330,7 @@ def add_product():
 @login_required
 def remove_product(id):
 
-    if current_user.email != secret.admin:
+    if current_user.email != os.environ.get('ADMIN_SECRET_KEY', secret.admin):
         abort(403)
 
     else:
@@ -350,7 +351,7 @@ def edit_product(id):
 
     product = Product.query.get(id)
 
-    if current_user.email != secret.admin:
+    if current_user.email != os.environ.get('ADMIN_SECRET_KEY', secret.admin):
         abort(403)
 
     if request.method == 'POST':
@@ -426,8 +427,8 @@ def contact():
 
         elif len(message) < 20:
             flash(
-                'Message must be at least 20 characters in lenght.',
-                category='success'
+                'Message must be at least 20 characters in length.',
+                category='error'
             )
 
         else:
@@ -453,7 +454,7 @@ def stripe_webhook():
 
     payload = request.get_data()
     sig_header = request.environ.get('HTTP_STRIPE_SIGNATURE')
-    endpoint_secret = secret.endpoint_secret
+    endpoint_secret = os.environ.get('ENDPOINT_SECRET_KEY', secret.endpoint_secret)
     event = None
 
     try:
