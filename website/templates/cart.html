@@ -1,40 +1,44 @@
 {% extends 'base.html' %}
 
+
+{% block title %}Cart{% endblock %}
+
+
 {% block content %}
+  <hr class="intro-text-tb">
+  <h1 class="intro-text">Your Cart</h1>
+  <hr class="intro-text-bb">
+  
 
-<hr class="intro-text-tb">
-<h1 class="intro-text">Your Cart</h1>
-<hr class="intro-text-bb">
+  {% for item in cart_items %}
+    {% if item.product %}
+      <div class="cart">
+        <a href="{{ url_for('views.product_details', id=item.product.id) }}">
+          <img src="{{ item.product.image_url }}" alt="{{ item.name }}" class="cart-image img-thumbnail mx-auto"/>
+        </a>
+        <p class=" item-name">{{ item.product.name }}</p>
+        <p class="cart-text">Price: ${{ "%.2f" % item.price }}</p> 
+        <p class="cart-text">Ring Size: {{ item.size }}</p>
+        <p class="cart-text">Quantity: {{ item.quantity }}</p>
+        <form action="{{ url_for('auth.remove_from_cart', product_id=item.product.id, product_size=float(item.size)) }}" method="POST">
+          <button type="submit" class="btn remove-btn">Remove</button>
+        </form>
+      </div>
+      <hr class="cart-divider">
+    {% endif %}
+  {% endfor %}
 
-{% for item in cart_items %}
-  {% if item.product %}
-    <div class="cart">
-      <a href="{{ url_for('views.product_details', id=item.product.id) }}">
-        <img src="{{ item.product.image_url }}" alt="{{ item.name }}" class="cart-image img-thumbnail mx-auto"/>
-      </a>
-      <p class=" item-name">{{ item.product.name }}</p>
-      <p class="cart-text">Price: ${{ "%.2f" % item.price }}</p> 
-      <p class="cart-text">Ring Size: {{ item.size }}</p>
-      <p class="cart-text">Quantity: {{ item.quantity }}</p>
-      <form action="{{ url_for('auth.remove_from_cart', product_id=item.product.id, product_size=float(item.size)) }}" method="POST">
-        <button type="submit" class="btn remove-btn">Remove</button>
-      </form>
-    </div>
-    <hr class="cart-divider">
-  {% endif %}
-{% endfor %}
 
-<p class="total-price">Total: ${{ "%.2f" % total_price }}</p>
-<button type="submit" class='checkout-btn' id="checkout-btn">Proceed To Checkout</button>
+  <p class="total-price">Total: ${{ "%.2f" % total_price }}</p>
+  <button type="submit" class='checkout-btn' id="checkout-btn">Proceed To Checkout</button>
 
-<script src="https://js.stripe.com/v3/"></script>
+  <script src="https://js.stripe.com/v3/"></script>
 
-<script>
-  const checkout_public_key = '{{ checkout_public_key }}';
-  const checkout_session_id = '{{ checkout_session_id }}';
-</script>
+  <script>
+    const checkout_public_key = '{{ checkout_public_key }}';
+    const checkout_session_id = '{{ checkout_session_id }}';
+  </script>
 
-<script src="{{ url_for('static', filename='script-no-ajax.js') }}"></script>
-
+  <script src="{{ url_for('static', filename='script-no-ajax.js') }}"></script>
 {% endblock %}
 

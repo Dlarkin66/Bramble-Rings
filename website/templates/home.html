@@ -3,28 +3,21 @@
 
 {% block title %}Home{% endblock %}
 
+ 
 {% block content2 %}
-
   <div>
-    <img 
-      src="https://drive.google.com/uc?export=view&id=10DKWMUPf7HUseJWLUUmFiPp49enSx1xK" 
-      alt="Bramble, Rings For Any Occasion" 
-      class="img-fluid home-banner"
-    />
+    <img src="https://drive.google.com/uc?export=view&id=10DKWMUPf7HUseJWLUUmFiPp49enSx1xK" alt="Bramble, Rings For Any Occasion" class="img-fluid home-banner"/>
   </div>
-
 {% endblock %}
 
+
 {% block content %}
-
   <div class="row justify-content-center">
-
     <hr class="intro-text-tb">
     <h1 class="intro-text">Handmade Rings, Crafted To Last A Lifetime</h1>
     <hr class="intro-text-bb">
 
     {% for product in products %}
-      
       <div class="col-md-3">
         <a href="{{ url_for('views.product_details', id=product.id) }}">
           <img src="{{ product.image_url }}" alt="{{ product.name }}" class="img-thumbnail mx-auto"/>
@@ -35,18 +28,12 @@
         <p class="product-materials">{{ product.materials }}</p>
         <p class="price">${{ "%.2f" % product.price }}</p>
         
-        
-
         {% if user.is_authenticated and user.email == admin %}
-
           <form action="{{ url_for('auth.remove_product', id=product.id) }}" method="POST">
               <button type="submit">Remove</button>
           </form>
-
         {% endif %}
-
       </div>
-
     {% endfor %}
 
     <hr class="why-bramble-tb">

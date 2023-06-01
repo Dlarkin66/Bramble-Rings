@@ -1,35 +1,27 @@
-{% extends "base.html" %} {% block title %}login{% endblock %}
+{% extends "base.html" %} 
+
+
+{% block title %}login{% endblock %}
+
 
 {% block content %} 
-<form method="POST">
-    <hr class="login-logout-header-tb">
-    <h3 class="login-logout-header" align="center">Login</h3>
-    <hr class="login-logout-header-bb">
+    <form method="POST">
+        <hr class="login-logout-header-tb">
+        <h3 class="login-logout-header" align="center">Login</h3>
+        <hr class="login-logout-header-bb">
 
-    <div class="form-border">
-        <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input 
-                type="email" 
-                class="form-control" 
-                id="email" 
-                name="email"
-                placeholder="Enter email"
-            />
-        <br />
+        <div class="form-border">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"/>
+            </div>
 
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input 
-                type="password" 
-                class="form-control" 
-                id="password"
-                name="password"
-                placeholder="Enter password"
-            />
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"/>
+            </div>
         </div>
-    </div>
 
-    <button type="submit" class="btn">Submit</button>
-</form>
+        <button type="submit" class="btn">Submit</button>
+    </form>
 {% endblock %}

@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 
+{% block title %}Edit Product{% endblock %}
+
+
 {% block content %}
-<form method="POST" action="{{ url_for('auth.edit_product', id=product.id) }}">
+  <form method="POST" action="{{ url_for('auth.edit_product', id=product.id) }}">
 
     <div class="form-group">
       <label for="name">Name</label>
@@ -55,6 +58,5 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Update Product</button>
-</form>
-
+  </form>
 {% endblock %}

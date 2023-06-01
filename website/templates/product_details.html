@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
+
 {% block title %}Product Details{% endblock %}
 
-{% block content %}
 
+{% block content %}
     <div class="product-container">
         <div class="gallery-container">
             <div class="gallery">
-
                 <div class="main-image active">
                     <img class='active-photo' src="{{ product.image_url_2 }}" alt="{{ product.name }}">
                 </div>
@@ -29,12 +29,10 @@
                         <img src="{{ product.image_url_4 }}" alt="{{ product.name }}" class="img-thumbnail pd">
                     </div>
                 {% endif %}
-
             </div>
         </div>
            
         <div class="description-container">
-
             <hr class="intro-text-tb product-name-tb">
             <h1 class="intro-text">{{ product.name }}</h1>
             <hr class="intro-text-bb">
@@ -79,14 +77,16 @@
             {% if user.is_authenticated and user.email == admin %}
                 <a href="{{ url_for('auth.edit_product', id=product.id) }}">Edit</a>
             {% endif %}
-
         </div>
     </div>
     
+
     <br>
+
     <hr class="intro-text-tb packaging-txt-tb">
     <h1 class="intro-text">Packaging</h1>
     <hr class="intro-text-bb">
+
     <br>
    
 
@@ -102,20 +102,26 @@
 
     
     <br>
+
+
     <hr class="intro-text-tb">
     <h1 class="intro-text">Store Policies</h1>
     <hr class="intro-text-bb">
+
+
     <br>
 
-    
+
     <div class="form-border">
         <h2 class="question">Cancellations</h2>
         <hr class="question-bb">
         <p class="raleway-text">While I don't typically accept cancellations, I'm always willing to try and help resolve any issues you may have with your order. Simply reach out to me and I'll do everything I can to make things right!</p>
     </div>
 
+
     <br>
     <br>
+
 
     <div class="form-border">
         <h2 class="question">Size Exchanges</h2>
@@ -123,9 +129,11 @@
         <p class="raleway-text">I'm unable to process size exchanges, if I ship you the wrong size however, I'm happy to send you a replacement completely free of charge!</p> 
     </div>
 
+
     <br>
     <br>
 
+    
     <div class="form-border">
         <h2 class="question">Refunds and Replacements</h2>
         <hr class="question-bb">
@@ -141,10 +149,8 @@
         thumbnail.addEventListener('click', function() {
         var newImageSrc = this.querySelector('img').getAttribute('src');
         activeImage.setAttribute('src', newImageSrc);
+        });
     });
-});
     </script>
-    
-
 {% endblock %}
 
