@@ -5,7 +5,6 @@ from flask_migrate import Migrate
 from flask_mail import Mail
 import os
 from os import path
-from . import secret
 
 
 db = SQLAlchemy()
@@ -15,15 +14,15 @@ DB_NAME = "database.db"
 def create_app():
     # App configuration
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', secret.secret_key)
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     app.config['STRIPE_PUBLIC_KEY'] = "pk_live_51N6HKxLW7Q4gXOtz6rxys8vMr1VSjaIE8dbVrroot5HFOFyZQJVpnlL5hZidkoBDo4WHhcNP8eBx63VNdSFoylke00WbbE7t1x"
-    app.config['STRIPE_SECRET_KEY'] =  os.environ.get('STRIPE_SECRET_KEY', secret.stripe_secret_key)
+    app.config['STRIPE_SECRET_KEY'] =  os.environ.get('STRIPE_SECRET_KEY')
     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
     app.config['MAIL_PORT'] = 465
     app.config['MAIL_USE_SSL'] = True
-    app.config['MAIL_USERNAME'] = os.environ.get('MAIL_SECRET_KEY', secret.mail_email)
-    app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD_KEY', secret.mail_password)
+    app.config['MAIL_USERNAME'] = os.environ.get('MAIL_SECRET_KEY')
+    app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD_KEY')
 
     # Initialize extensions
     db.init_app(app)

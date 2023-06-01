@@ -7,12 +7,12 @@ import os
 
 from .models import User, Product
 from . import db
-from . import secret
+
 
  
 auth = Blueprint('auth', __name__)
 mail = Mail()
-stripe.api_key = os.environ.get('STRIPE_SECRET_KEY', secret.stripe_secret_key)
+stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
@@ -282,7 +282,7 @@ def remove_from_cart(product_id, product_size):
 @login_required
 def add_product():
 
-    if current_user.email != os.environ.get('ADMIN_SECRET_KEY', secret.admin):
+    if current_user.email != os.environ.get('ADMIN_SECRET_KEY'):
         abort(403)
 
     if request.method == 'POST':
@@ -330,7 +330,7 @@ def add_product():
 @login_required
 def remove_product(id):
 
-    if current_user.email != os.environ.get('ADMIN_SECRET_KEY', secret.admin):
+    if current_user.email != os.environ.get('ADMIN_SECRET_KEY'):
         abort(403)
 
     else:
@@ -351,7 +351,7 @@ def edit_product(id):
 
     product = Product.query.get(id)
 
-    if current_user.email != os.environ.get('ADMIN_SECRET_KEY', secret.admin):
+    if current_user.email != os.environ.get('ADMIN_SECRET_KEY'):
         abort(403)
 
     if request.method == 'POST':
@@ -454,7 +454,7 @@ def stripe_webhook():
 
     payload = request.get_data()
     sig_header = request.environ.get('HTTP_STRIPE_SIGNATURE')
-    endpoint_secret = os.environ.get('ENDPOINT_SECRET_KEY', secret.endpoint_secret)
+    endpoint_secret = os.environ.get('ENDPOINT_SECRET_KEY')
     event = None
 
     try:

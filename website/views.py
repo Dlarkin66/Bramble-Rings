@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 from flask_login import current_user
 from .models import Product
-from .secret import admin
+import os
 
 
 views = Blueprint('views', __name__)
@@ -15,7 +15,7 @@ def home():
         "home.html", 
         products=products, 
         user=current_user, 
-        admin=admin
+        admin= os.environ.get('ADMIN_SECRET_KEY')
     )
 
 
@@ -27,7 +27,7 @@ def product_details(id):
         'product_details.html', 
         product=product, 
         user=current_user, 
-        admin=admin
+        admin=os.environ.get('ADMIN_SECRET_KEY')
     )
 
 
