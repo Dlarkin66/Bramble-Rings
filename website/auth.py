@@ -490,6 +490,6 @@ def download_database():
     if current_user.email != os.environ.get('ADMIN_SECRET_KEY'):
         abort(403)
 
-    database_path = 'D:\Programming\Python _Projects\Bramble-Rings-Dev-Server\instance\database.db'
+    database_path = './instance/database.db'
 
     return send_file(database_path, as_attachment=True)
