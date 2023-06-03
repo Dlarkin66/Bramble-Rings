@@ -492,4 +492,4 @@ def download_database():
 
     database_path = 'instance/database.db'
 
-    return send_file(database_path, as_attachment=True)
+    return send_file(database_path, as_attachment=True, user=current_user)
