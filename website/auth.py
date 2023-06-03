@@ -483,7 +483,7 @@ def stripe_webhook():
     return {}
 
 
-@auth.route('/download-database')
+@auth.route('/download-database', methods=["GET"])
 @login_required
 def download_database():
 
