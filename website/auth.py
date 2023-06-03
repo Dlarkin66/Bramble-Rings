@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, abort, session, request
+from flask import Blueprint, render_template, request, flash, redirect, url_for, abort, session, request, send_file
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 from flask_mail import Mail, Message
@@ -483,4 +483,13 @@ def stripe_webhook():
     return {}
 
 
+@auth.route('/download-database')
+@login_required
+def download_database():
 
+    if current_user.email != os.environ.get('ADMIN_SECRET_KEY'):
+        abort(403)
+
+    database_path = 'instance/database.db'
+
+    return send_file(database_path, as_attachment=True)
