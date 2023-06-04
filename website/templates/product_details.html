@@ -12,23 +12,25 @@
                     <img class='active-photo' src="{{ product.image_url_2 }}" alt="{{ product.name }}">
                 </div>
 
-                {% if product.image_url_2 %}
-                    <div class="thumbnail">
-                        <img src="{{ product.image_url_2 }}" alt="{{ product.name }}" class="img-thumbnail pd">
-                    </div>
-                {% endif %}
+                <div class="thumbail-container">
+                    {% if product.image_url_2 %}
+                        <div class="thumbnail">
+                            <img src="{{ product.image_url_2 }}" alt="{{ product.name }}" class="img-thumbnail pd">
+                        </div>
+                    {% endif %}
 
-                {% if product.image_url_3 %}
-                    <div class="thumbnail">
-                        <img src="{{ product.image_url_3 }}" alt="{{ product.name }}" class="img-thumbnail pd">
-                    </div>
-                {% endif %}
+                    {% if product.image_url_3 %}
+                        <div class="thumbnail">
+                            <img src="{{ product.image_url_3 }}" alt="{{ product.name }}" class="img-thumbnail pd">
+                        </div>
+                    {% endif %}
 
-                {% if product.image_url_4 %}
-                    <div class="thumbnail">
-                        <img src="{{ product.image_url_4 }}" alt="{{ product.name }}" class="img-thumbnail pd">
-                    </div>
-                {% endif %}
+                    {% if product.image_url_4 %}
+                        <div class="thumbnail">
+                            <img src="{{ product.image_url_4 }}" alt="{{ product.name }}" class="img-thumbnail pd">
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
            

@@ -347,6 +347,10 @@ footer.show{
     padding: 0 20px;
 }
 
+.thumbnail-container{
+    display: inline-block;
+}
+
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -354,7 +358,7 @@ footer.show{
 
 .active-photo{
     width: 30vw;
-    height: 30vw;
+    height: auto;
     margin-top: 20px;
     object-fit: cover;
     border-radius: 5px;
@@ -366,9 +370,9 @@ footer.show{
 }
 
 .thumbnail img{
-    width: 9.8vw;
-    height: 9.8vw;
-    margin-right: 5px;
+    width: 9.5vw;
+    height: 9.5vw;
+    margin-right: 10px;
     object-fit: cover;
 }
 
@@ -417,14 +421,15 @@ footer.show{
     font-family: 'Cinzel', serif;
     font-weight: bold;
     padding-right: 10px;
-    margin-top: 10px;
+    margin-top: 50px;
+    
 }
 
 .ring-size-select{
     border: 1px solid black;
     border-radius: 5px;
     align-items: flex-start;
-    margin-top: 10px;
+    margin-top: 50px;
 }
 
 option{
@@ -438,7 +443,7 @@ option:hover{
 }
 
 .add-to-cart{
-    display: inline-block;
+    display: block;
     text-align: center;
     padding: 10px 20px;
     background-color: black;
@@ -449,7 +454,9 @@ option:hover{
     font-weight: bold;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
     transition: 0.6s;
-    margin-top: -10px;
+    margin-top: -30px;
+    margin-left:auto;
+    margin-right: 10px;
 }
 
 .add-to-cart:hover{
@@ -485,6 +492,23 @@ option:hover{
     text-align: center;
 }
 
+@media only screen and (max-width: 359px){
+
+    .ring-size-label{
+        margin-right: auto;
+        margin-left: 0px;
+    }
+
+    .ring-size-select{
+        margin-right: auto;
+        margin-left: 0px;
+    }
+
+    .add-to-cart{
+        width: 100%;
+        margin-top: 50px;
+    }
+}
 
 @media only screen and (max-width: 767px){
 
@@ -495,6 +519,10 @@ option:hover{
     .gallery-container{
         width: 100%;
         height: auto;
+    }
+
+    .thumbnail-container{
+        display: inline-block;
     }
 
     .description-container{
@@ -515,18 +543,18 @@ option:hover{
     .thumbnail{
         flex: 0 0 calc(33.33% - 10px);
         max-width: calc(33.33% - 10px);
-        margin-right: 10px;
-        display: flex;
+        display: inline-block;
         align-items: flex-start;
+        height: 100%;
     }
 
     .thumbnail:nth-child(2){
-        margin-right: auto;
+        margin-left: 10.5px;
     }
 
     .thumbnail:last-child{
         margin-right: 0;
-        margin-left: 5px;
+        margin-left: 10.5px;
     }
 
     .thumbnail img{
@@ -551,11 +579,17 @@ option:hover{
     }
 
     .ring-size-container{
-        display: inline-block;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .ring-size-select{
+        margin-right: 10px;
     }
 
     .add-to-cart{
-        margin-left: 25px;
+        margin-left: auto;
+        margin-right: 0px;
     }
 
     .have-any-questions-text{
@@ -588,7 +622,57 @@ option:hover{
 }
 
 
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
 
+    .product-container{
+        width: 100%;
+        display: block;
+        align-items: center;
+    }
+
+    .gallery-container{
+        width: 100%;
+        height: 100%;
+    }
+
+    .gallery{
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+
+    .active-photo{
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .thumbnail-container{
+        display: inline-block;
+        width: 100%;
+    }
+
+    .description-container{
+        width: 100%;
+    }
+
+    .active-photo{
+        width: 50vw;
+        height: auto;
+    }
+
+    .thumbnail img{
+        width: 15vw;
+        height: 15vh;
+        margin-right: 20px;
+        margin-bottom: 50px;
+        object-fit: cover;
+
+    }
+
+    .thumbnail:nth-child(1){
+        margin-left: 20px;
+    }
+}
 
 
 /* About section */
@@ -604,6 +688,8 @@ option:hover{
     width: 50%;
     box-sizing: border-box;
     padding: 0 20px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .about-me-text-container{
@@ -612,7 +698,8 @@ option:hover{
     padding: 0 20px;
     border: 1px solid black;
     border-radius: 5px;
-    margin-top: 125px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .about-me-tb{
@@ -686,12 +773,13 @@ option:hover{
 .reviews img{
     display: inline-block;
     width: 30%;
+    height: auto;
     vertical-align: middle;
     border-right: 1px solid black;
 }
 
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1024px) {
     .about-section-container{
         display: block;
     }
