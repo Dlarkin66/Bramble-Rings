@@ -396,7 +396,6 @@ def edit_product(id):
 
 
 @auth.route('/contact', methods=['GET', 'POST'])
-@login_required
 def contact():
 
     if request.method == 'POST':
