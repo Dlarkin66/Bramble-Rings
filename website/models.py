@@ -21,9 +21,3 @@ class Product(db.Model):
     image_url_2 = db.Column(db.String(200))
     image_url_3= db.Column(db.String(200))
     image_url_4 = db.Column(db.String(200))
-
-
-
-
-
-
